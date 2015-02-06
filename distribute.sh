@@ -354,6 +354,8 @@ function run_prepare() {
 	export ARCH="armeabi"
 	#export ARCH="armeabi-v7a" # not tested yet.
 
+	export _PYTHON_HOST_PLATFORM="android-$ARCH"
+
 	info "Check mandatory tools"
 	# ensure that some tools are existing
 	for tool in tar bzip2 unzip make gcc g++; do
