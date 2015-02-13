@@ -756,6 +756,13 @@ function run_pymodules_install() {
 	debug "Create a requirement file for pure-python modules"
 	try echo "" > requirements.txt
 	for mod in $PYMODULES; do
+		# check if there is not an overload from environment
+		module_dir=$(eval "echo \$P4A_${mod}_DIR")
+		if [ "$module_dir" ]
+		then
+			debug "\$P4A_${mod}_DIR is not empty, install from $module_dir dir instead of downloading"
+			mod=$module_dir
+		fi
 		echo $mod >> requirements.txt
 	done
 
