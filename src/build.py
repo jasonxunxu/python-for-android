@@ -213,7 +213,10 @@ def make_package(args):
     default_ouya_icon = 'templates/kivy-ouya-icon.png'
     # Figure out the version code, if necessary.
     if not args.numeric_version:
-        for i in args.version.split('.'):
+        import re
+        version, suffix = re.match(r'([\d\.]+)(.*)', args.version).groups()
+
+        for i in version.split('.'):
             version_code *= 100
             version_code += int(i)
 
@@ -378,7 +381,8 @@ tools directory of the Android SDK.
                     help=('The version number of the project. This should '
                           'consist of numbers and dots, and should have the '
                           'same number of groups of numbers as previous '
-                          'versions.'),
+                          'versions. If can optionally be followed by a '
+                          'suffix, usually a release identifier, e.g. "-dev".'),
                     required=True)
     ap.add_argument('--numeric-version', dest='numeric_version',
                     help=('The numeric version number of the project. If not '
