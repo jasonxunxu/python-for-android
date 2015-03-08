@@ -354,7 +354,7 @@ function run_prepare() {
 	export ARCH="armeabi"
 	#export ARCH="armeabi-v7a" # not tested yet.
 
-	export _PYTHON_HOST_PLATFORM="android-$ARCH"
+	export __PYTHON_TARGET_PLATFORM__="android-$ARCH"
 
 	info "Check mandatory tools"
 	# ensure that some tools are existing
