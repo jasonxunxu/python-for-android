@@ -231,7 +231,7 @@ function push_arm() {
 	export READELF="$TOOLCHAIN_PREFIX-readelf"
 
 	# This will need to be updated to support Python versions other than 2.7
-	export BUILDLIB_PATH="$BUILD_hostpython/build/lib.linux-`uname -m`-2.7/"
+	export BUILDLIB_PATH="$BUILD_hostpython/build/lib.$__PYTHON_TARGET_PLATFORM__-2.7/"
 
 	# Use ccache ?
 	which ccache &>/dev/null

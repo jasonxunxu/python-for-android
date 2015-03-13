@@ -11,6 +11,11 @@ RECIPE_hostpython=$RECIPES_PATH/hostpython
 function prebuild_hostpython() {
 	cd $BUILD_hostpython
 	try cp $RECIPE_hostpython/Setup Modules/Setup
+
+	if [ ! -f .patched ]; then
+		try patch -p1 < $RECIPE_python/patches/get-platform-from-env.patch
+		touch .patched
+	fi
 }
 
 function shouldbuild_hostpython() {
