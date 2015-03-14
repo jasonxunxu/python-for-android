@@ -5,8 +5,8 @@
          return sys.platform
  
 +    # Set for cross builds explicitly
-+    if "_PYTHON_HOST_PLATFORM" in os.environ:
-+        return os.environ["_PYTHON_HOST_PLATFORM"]
++    if "__PYTHON_TARGET_PLATFORM__" in os.environ:
++        return os.environ["__PYTHON_TARGET_PLATFORM__"]
 +
      if os.name != "posix" or not hasattr(os, 'uname'):
          # XXX what about the architecture? NT is Intel or Alpha,
